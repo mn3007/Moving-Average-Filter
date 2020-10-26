@@ -1,34 +1,50 @@
-
+% store the peak period data in a new array
 origdata = data.Tp;
 
-avedata = movavg_timecorr(data.Tp, 5);
-avedata21 = movavg_timecorr(data.Tp, 21);
-avedata51 = movavg_timecorr(data.Tp, 51);
+% perform moving averages and store
+avetdata = movavg_timecorr(data.Tp, 5);
+avetdata21 = movavg_timecorr(data.Tp, 21);
+avetdata51 = movavg_timecorr(data.Tp, 51);
 
+% plot the original data
 subplot(3,1,1),
 plot(origdata,'Color',[0.8 0.8 0.8],'LineWidth',2)
 hold on
-plot(avedata,'k')
+% plot the time corrected moving average when M = 5 
+plot(avetdata,'k')
+% label y-axis
 ylabel('Peak period (s)')
+% toggle visibility of minor grid lines
 grid MINOR
+% add plot title
 title('M=5')
 
+% plot the original data
 subplot(3,1,2), 
 plot(origdata,'Color',[0.8 0.8 0.8],'LineWidth',2)
 hold on
-plot(avedata21,'k')
+% plot the time corrected moving average when M = 21
+plot(avetdata21,'k')
+% label y-axis
 ylabel('Peak period (s)')
+% toggle visibility of minor grid lines
 grid MINOR
+% add plot title
 title('M=21')
 
-
+% plot the original data
 subplot(3,1,3), 
 plot(origdata,'Color',[0.8 0.8 0.8],'LineWidth',2)
 hold on
-plot(avedata51,'k')
+% plot the time corrected moving average
+plot(avetdata51,'k')
+% label x-axis
 xlabel('Time');
+% label y-axis
 ylabel('Peak period (s)')
+% toggle visibility of minor grid lines
 grid MINOR
+% add plot title
 title('M=51')
 
 % Set the remaining axes properties
